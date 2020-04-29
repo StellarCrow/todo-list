@@ -18,7 +18,7 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  createTodo() {
+  public createTodo(): void {
     const item: ITodo = {
       userId: 1,
       id: 1,

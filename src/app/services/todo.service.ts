@@ -1,4 +1,4 @@
-import { ITodo } from './../models/ITodo';
+import { ITodo } from 'src/app/models/ITodo';
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ export class TodoService {
   constructor(private httpService: HttpService, private randomService: RandomService) {}
 
   public getTodoList(): Observable<ITodo[]> {
-    return this.httpService.list<ITodo[]>(this.url).pipe(
+    return this.httpService.get<ITodo[]>(this.url).pipe(
       map((items) => {
         return items.map((item) => {
           item.creationDate = this.randomService.getRandomDate(2020, [1, 4]);
@@ -33,8 +33,7 @@ export class TodoService {
 
   public deleteTodo(id: number): void {
     const url = `${this.url}/${id}`;
-    this.httpService.delete(url).subscribe((data) => {
-      console.log(data);
+    this.httpService.delete<void>(url).subscribe(() => {
       const index = this.todoList.findIndex((todo) => todo.id === id);
       this.todoList.splice(index, 1);
     });
