@@ -1,1 +1,8 @@
-<p>todo-item works!</p>
+<div class="todo">
+    <div class="todo__check">
+        <mat-checkbox [checked]="todo.completed"></mat-checkbox>
+    </div>
+    <div class="todo__text">
+        {{todo.title}}
+    </div>
+</div>

@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [AppComponent, TodoItemComponent, TodoListComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })

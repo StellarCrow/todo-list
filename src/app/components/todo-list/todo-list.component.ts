@@ -23,7 +23,10 @@ export class TodoListComponent implements OnInit {
       userId: 1,
       id: 1,
       title: '',
-      completed: true
+      completed: true,
+      username: 'Someone',
+      creationDate: new Date('2019-01-16'),
+      deadline: new Date('2020-01-16'),
     };
     this.todoService.postTodo(item).subscribe((newTodo) => {
       this.todoList.push(newTodo);
