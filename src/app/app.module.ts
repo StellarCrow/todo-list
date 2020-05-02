@@ -8,11 +8,13 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddTodoComponent } from './components/add-todo/add-todo.component';
+import { MainPageComponent } from './components/pages/main-page/main-page.component';
 
 @NgModule({
-  declarations: [AppComponent, TodoItemComponent, TodoListComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule, FormsModule],
+  declarations: [AppComponent, TodoItemComponent, TodoListComponent, AddTodoComponent, MainPageComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
