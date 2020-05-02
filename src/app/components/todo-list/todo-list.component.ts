@@ -18,6 +18,16 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  public checkTodo(todo: ITodo): void {
+    const index = this.todoList.findIndex((item) => item.id === todo.id);
+    this.todoList[index] = { ...this.todoList[index], completed: !this.todoList[index].completed };
+  }
+
+  public deleteTodo(todo: ITodo): void {
+    const index = this.todoList.findIndex((item) => item.id === todo.id);
+    this.todoList.splice(index, 1);
+  }
+
   public createTodo(): void {
     const item: ITodo = {
       userId: 1,

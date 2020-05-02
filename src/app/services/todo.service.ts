@@ -31,12 +31,9 @@ export class TodoService {
     return this.httpService.post<ITodo>(this.url, item);
   }
 
-  public deleteTodo(id: number): void {
+  public deleteTodo(id: number): Observable<void> {
     const url = `${this.url}/${id}`;
-    this.httpService.delete<void>(url).subscribe(() => {
-      const index = this.todoList.findIndex((todo) => todo.id === id);
-      this.todoList.splice(index, 1);
-    });
+    return this.httpService.delete<void>(url);
   }
 
   public modifyTodo(id: number, item: ITodo) {
@@ -48,12 +45,8 @@ export class TodoService {
     });
   }
 
-  public checkTodo(id: number, check: object) {
+  public checkTodo(id: number, check: object): Observable<ITodo> {
     const url = `${this.url}/${id}`;
-    this.httpService.patch<ITodo>(url, check).subscribe((res) => {
-      console.log(res);
-      const index = this.todoList.findIndex((todo) => todo.id === id);
-      this.todoList[index] = res;
-    });
+    return this.httpService.patch<ITodo>(url, check);
   }
 }
