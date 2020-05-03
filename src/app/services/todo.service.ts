@@ -1,20 +1,22 @@
 import { ITodo } from 'src/app/models/ITodo';
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
 import { RandomService } from './random.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
-  public todoList: ITodo[];
+  private todoList: ITodo[] = [];
+  private subject = new BehaviorSubject<ITodo[]>([]);
+  public todos$ = this.subject.asObservable();
   private url = 'https://jsonplaceholder.typicode.com/todos';
 
   constructor(private httpService: HttpService, private randomService: RandomService) {}
 
-  public getTodoList(): Observable<ITodo[]> {
+  public getTodos(): Observable<ITodo[]> {
     return this.httpService.get<ITodo[]>(this.url).pipe(
       map((items) => {
         return items.map((item) => {
@@ -23,37 +25,38 @@ export class TodoService {
           item.username = this.randomService.getRandomName();
           return item;
         });
+      }),
+      tap(list => {
+        this.todoList = list;
+        this.subject.next(list);
+        return list;
+      }),
+      catchError((err) => {
+        console.log(err);
+        return [];
       })
     );
   }
 
-  public postTodo(item: ITodo): Observable<ITodo> {
-    return this.httpService.post<ITodo>(this.url, item);
+  public createTodo(item: ITodo): void {
+    this.todoList.unshift(item);
+    this.subject.next(this.todoList);
   }
 
   public deleteTodo(id: number): void {
-    const url = `${this.url}/${id}`;
-    this.httpService.delete<void>(url).subscribe(() => {
-      const index = this.todoList.findIndex((todo) => todo.id === id);
-      this.todoList.splice(index, 1);
-    });
+    const index = this.todoList.findIndex((item) => item.id === id);
+    this.todoList.splice(index, 1);
+    this.subject.next(this.todoList);
   }
 
-  public modifyTodo(id: number, item: ITodo) {
-    const url = `${this.url}/${id}`;
-    this.httpService.put<ITodo>(url, item).subscribe((res) => {
-      console.log(res);
-      const index = this.todoList.findIndex((todo) => todo.id === id);
-      this.todoList[index] = res;
-    });
+  public modifyTodo(item: ITodo): void {
+    const index = this.todoList.findIndex((todo) => todo.id === item.id);
+    this.todoList[index] = item;
+    this.subject.next(this.todoList);
   }
 
-  public checkTodo(id: number, check: object) {
-    const url = `${this.url}/${id}`;
-    this.httpService.patch<ITodo>(url, check).subscribe((res) => {
-      console.log(res);
-      const index = this.todoList.findIndex((todo) => todo.id === id);
-      this.todoList[index] = res;
-    });
+  public checkTodo(id: number): void {
+    const index = this.todoList.findIndex((item) => item.id === id);
+    this.todoList[index] = { ...this.todoList[index], completed: !this.todoList[index].completed };
   }
 }

@@ -1,8 +1,13 @@
 <div class="todo">
-    <div class="todo__check">
-        <mat-checkbox [checked]="todo.completed"></mat-checkbox>
-    </div>
-    <div class="todo__text">
-        {{todo.title}}
-    </div>
+  <div class="todo__check">
+    <mat-checkbox [checked]="todo.completed" (change)="checkTodo()">
+      {{ todo.completed }}
+    </mat-checkbox>
+  </div>
+  <div class="todo__text">
+    <app-modify-form [todo]="todo"></app-modify-form>
+  </div>
+  <div class="todo__delete">
+    <button mat-raised-button color="warn" (click)="deleteTodo()">Delete</button>
+  </div>
 </div>
