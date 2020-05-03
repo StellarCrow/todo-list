@@ -1,2 +1,19 @@
-<app-add-todo></app-add-todo>
-<app-todo-list></app-todo-list>
+<main class="main">
+  <aside class="main__sidebar">
+    <app-sidebar></app-sidebar>
+  </aside>
+  <div class="main__content">
+    <div class="main__options">
+      <div class="main__search">
+        <app-search></app-search>
+      </div>
+      <div class="main__filters">Filters</div>
+    </div>
+    <div class="main__form">
+      <app-add-todo></app-add-todo>
+    </div>
+    <div class="main__list">
+      <app-todo-list></app-todo-list>
+    </div>
+  </div>
+</main>

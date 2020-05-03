@@ -1,0 +1,19 @@
+.main {
+    display: flex;
+    flex-flow: row nowrap;
+
+    &__sidebar {
+        flex: 0 1 20%;
+    }
+
+    &__content {
+        flex: auto;
+        padding: 4% 3%;
+    }
+
+    &__options {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+}
