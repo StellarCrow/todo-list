@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ITodo } from 'src/app/models/ITodo';
 import { v4 as uuidv4 } from 'uuid';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -11,9 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class AddTodoComponent implements OnInit {
   public addTodoForm: FormGroup;
 
-  @Output() createTodo = new EventEmitter<object>();
-
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private todoService: TodoService) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -33,11 +32,14 @@ export class AddTodoComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    const todo = {
+    const item: ITodo = {
       ...this.addTodoForm.value,
+      userId: 1,
       id: uuidv4(),
+      completed: false,
+      username: 'Someone',
       creationDate: new Date(),
     };
-    this.createTodo.emit(todo);
+    this.todoService.createTodo(item);
   }
 }
