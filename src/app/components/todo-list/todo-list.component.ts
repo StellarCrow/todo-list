@@ -18,6 +18,10 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  public trackByFn(item: ITodo): number {
+    return item.id;
+  }
+
   public checkTodo(todo: ITodo): void {
     this.todoService.checkTodo(todo.id);
   }

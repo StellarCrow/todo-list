@@ -23,8 +23,8 @@ export class ModifyFormComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.todo = {...this.todo, title: this.modifyForm.value.title}
-    this.todoService.modifyTodo(this.todo);
+   const modified = {...this.todo, title: this.modifyForm.value.title};
+    this.todoService.modifyTodo(modified);
   }
 
   public toggleButton(): void {
