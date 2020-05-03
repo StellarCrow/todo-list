@@ -5,7 +5,7 @@
     </mat-checkbox>
   </div>
   <div class="todo__text">
-    {{ todo.title }}
+    <app-modify-form [todo]="todo"></app-modify-form>
   </div>
   <div class="todo__delete">
     <button mat-raised-button color="warn" (click)="deleteTodo()">Delete</button>

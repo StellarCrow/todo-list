@@ -13,8 +13,6 @@ export class TodoItemComponent {
   @Output() deletedTodo = new EventEmitter<ITodo>();
 
   public checkTodo(): void {
-    console.log(this.todo.completed);
-    
     this.checkedTodo.emit(this.todo);
   }
 

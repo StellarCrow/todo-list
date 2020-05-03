@@ -60,8 +60,8 @@ export class TodoService {
     this.subject.next(this.todoList);
   }
 
-  public modifyTodo(id: number, item: ITodo) {
-    const index = this.todoList.findIndex((todo) => todo.id === id);
+  public modifyTodo(item: ITodo): void {
+    const index = this.todoList.findIndex((todo) => todo.id === item.id);
     this.todoList[index] = item;
     this.subject.next(this.todoList);
   }

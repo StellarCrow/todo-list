@@ -11,9 +11,10 @@ import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { MainPageComponent } from './components/pages/main-page/main-page.component';
+import { ModifyFormComponent } from './components/modify-form/modify-form.component';
 
 @NgModule({
-  declarations: [AppComponent, TodoItemComponent, TodoListComponent, AddTodoComponent, MainPageComponent],
+  declarations: [AppComponent, TodoItemComponent, TodoListComponent, AddTodoComponent, MainPageComponent, ModifyFormComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
