@@ -1,8 +1,8 @@
 import { ITodo } from 'src/app/models/ITodo';
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { Observable, BehaviorSubject, of, fromEvent, Subject, combineLatest } from 'rxjs';
-import { map, catchError, tap, debounceTime, filter, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Observable, BehaviorSubject,combineLatest } from 'rxjs';
+import { map, catchError, tap, debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { RandomService } from './random.service';
 
 @Injectable({
@@ -11,11 +11,25 @@ import { RandomService } from './random.service';
 export class TodoService {
   private todoList: ITodo[] = [];
   private subject = new BehaviorSubject<ITodo[]>([]);
-  public todos$ = this.subject.asObservable();
-  public filteredTodos$: Observable<ITodo[]>;
+  public search = new BehaviorSubject<string>('');
+  public todos$: Observable<ITodo[]>;
   private url = 'https://jsonplaceholder.typicode.com/todos';
 
-  constructor(private httpService: HttpService, private randomService: RandomService) {}
+  constructor(private httpService: HttpService, private randomService: RandomService) {
+    this.initTodos();
+    this.getTodos().subscribe();
+  }
+
+  private initTodos() {
+    const search$ = this.search.asObservable().pipe(debounceTime(500), distinctUntilChanged());
+    this.todos$ = combineLatest([this.subject.asObservable(), search$]).pipe(
+      map(([todos, searchString]) => {
+        return todos.filter((todo) => {
+          return todo.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
+        });
+      })
+    );
+  }
 
   public getTodos(): Observable<ITodo[]> {
     return this.httpService.get<ITodo[]>(this.url).pipe(
@@ -58,17 +72,10 @@ export class TodoService {
   public checkTodo(id: number): void {
     const index = this.todoList.findIndex((item) => item.id === id);
     this.todoList[index] = { ...this.todoList[index], completed: !this.todoList[index].completed };
+    this.subject.next(this.todoList);
   }
 
-  public searchTodos(searchQuery: Observable<string>) {
-    this.filteredTodos$ = combineLatest([this.todos$, searchQuery]).pipe(
-      map(([todos, searchString]) => {
-        return todos.filter((todo) => {
-          return todo.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
-        });
-      }),
-      debounceTime(500),
-      distinctUntilChanged()
-    );
+  public searchTodos(searchQuery: string) {
+    this.search.next(searchQuery);
   }
 }

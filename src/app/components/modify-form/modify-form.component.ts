@@ -2,6 +2,7 @@ import { ITodo } from './../../models/ITodo';
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
+import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-modify-form',
@@ -30,4 +31,5 @@ export class ModifyFormComponent implements OnInit {
   public toggleButton(): void {
     this.fieldOnFocus = !this.fieldOnFocus;
   }
+
 }

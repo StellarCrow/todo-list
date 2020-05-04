@@ -22,7 +22,7 @@ export class TodoListComponent implements OnInit {
     // this.todoService.filteredTodos$.subscribe(list => {
     //   this.todoList = list;
     // })
-    this.todoService.getTodos().subscribe();
+    // this.todoService.getTodos().subscribe();
   }
 
   public trackByFn(index: number, item: ITodo): number {

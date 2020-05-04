@@ -1,4 +1,4 @@
-<form autocomplete="off" [formGroup]="modifyForm" (submit)="onSubmit()">
-  <input type="text" formControlName="title" (focus)="toggleButton()" (blur)="toggleButton()" />
-  <button class="button" *ngIf="fieldOnFocus" mat-raised-button color="primary" type="submit" [disabled]="!modifyForm.valid">Save</button>
+<form autocomplete="off" class="modify" [formGroup]="modifyForm" (submit)="onSubmit()">
+  <input type="text" class="modify__input" formControlName="title" (focus)="toggleButton()" (blur)="toggleButton()" />
+  <button class="modify__button button" *ngIf="fieldOnFocus" mat-raised-button color="primary" type="submit" [disabled]="!modifyForm.valid">Save</button>
 </form>

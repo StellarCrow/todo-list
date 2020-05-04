@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
-import { startWith } from 'rxjs/operators';
+import { startWith, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -18,9 +18,14 @@ export class SearchComponent implements OnInit {
       searchText: [''],
     });
 
-    const search$ = this.searchForm.controls.searchText.valueChanges.pipe(startWith(''));
-    this.todoService.searchTodos(search$);
+    // const search$ = this.searchForm.controls.searchText.valueChanges.pipe(startWith(''), debounceTime(500), distinctUntilChanged());
+    // this.todoService.searchTodos(search$);
   }
 
   public onSubmit(): void {}
+
+  public onChange(): void {
+    const query = this.searchForm.value.searchText;
+    this.todoService.searchTodos(query);
+  }
 }
