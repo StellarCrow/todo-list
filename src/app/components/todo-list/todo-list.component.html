@@ -1,5 +1,5 @@
 <ul class="list">
-  <li *ngFor="let todo of todoList;trackBy: trackByFn">
+  <li *ngFor="let todo of todoList; trackBy: trackByFn">
     <app-todo-item [todo]="todo" (checkedTodo)="checkTodo($event)" (deletedTodo)="deleteTodo($event)"></app-todo-item>
   </li>
 </ul>

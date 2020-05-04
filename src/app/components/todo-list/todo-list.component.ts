@@ -1,6 +1,7 @@
 import { ITodo } from './../../models/ITodo';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
+
 
 @Component({
   selector: 'app-todo-list',
@@ -10,15 +11,21 @@ import { TodoService } from 'src/app/services/todo.service';
 export class TodoListComponent implements OnInit {
   public todoList: ITodo[];
 
+  @Input() searchText: string;
+
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.todoService.getTodos().subscribe((list) => {
+    this.todoService.todos$.subscribe((list) => {
       this.todoList = list;
     });
+    // this.todoService.filteredTodos$.subscribe(list => {
+    //   this.todoList = list;
+    // })
+    this.todoService.getTodos().subscribe();
   }
 
-  public trackByFn(item: ITodo): number {
+  public trackByFn(index: number, item: ITodo): number {
     return item.id;
   }
 
