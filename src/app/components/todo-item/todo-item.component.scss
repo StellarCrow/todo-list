@@ -1,13 +1,45 @@
 @import 'setup/variables';
 
 .todo {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 3%;
+  border-radius: 1em;
+  box-shadow: 0 0 3px $primary-color;
+  background: linear-gradient(to right, $text-color--light, $text-color--light, $primary-color);
+
+  &__options {
+    align-self: flex-end;
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    min-width: 50%;
-    padding: 4% 5%;
-    border-radius: 1em;
-    box-shadow: 0 0 3px $gray;
-    background-color: $text-color--light;
+    flex: 0 1 20%;
+  }
+
+  &__title {
+    font-weight: $bold;
+    margin-bottom: 1em;
+  }
+
+  &__deadline {
+    font-weight: $light;
+    color: $gray;
+    margin-bottom: 1.5em;
+  }
+
+  &__date {
+    color: $secondary-color;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+      color: $gray;
+      cursor: pointer;
+  }
 }

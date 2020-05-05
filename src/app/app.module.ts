@@ -14,6 +14,7 @@ import { MainPageComponent } from './components/pages/main-page/main-page.compon
 import { ModifyFormComponent } from './components/modify-form/modify-form.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SearchComponent } from './components/search/search.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SearchComponent } from './components/search/search.component';
     ModifyFormComponent,
     SidebarComponent,
     SearchComponent,
+    DatepickerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule, FormsModule, ReactiveFormsModule],
   providers: [],

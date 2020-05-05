@@ -3,11 +3,6 @@
     <mat-label>Add Todo</mat-label>
     <input matInput placeholder="Save the world..." formControlName="title" />
   </mat-form-field>
-  <mat-form-field color="accent">
-    <mat-label>Deadline</mat-label>
-    <input matInput formControlName="deadline" [matDatepickerFilter]="filterDate" [matDatepicker]="deadline">
-    <mat-datepicker-toggle matSuffix [for]="deadline"></mat-datepicker-toggle>
-    <mat-datepicker #deadline></mat-datepicker>
-  </mat-form-field>
+  <app-datepicker [parentForm]="addTodoForm" [controlName]="'deadline'" [datepickerName]="'deadline'"></app-datepicker>
   <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!addTodoForm.valid">Add todo</button>
 </form>

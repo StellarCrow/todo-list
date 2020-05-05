@@ -1,8 +1,8 @@
 import { ITodo } from './../../models/ITodo';
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
-import { Event } from '@angular/router';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modify-form',
@@ -11,25 +11,24 @@ import { Event } from '@angular/router';
 })
 export class ModifyFormComponent implements OnInit {
   public modifyForm: FormGroup;
-  public fieldOnFocus = false;
 
   @Input() todo: ITodo;
 
-  constructor(private formBuilder: FormBuilder, private todoService: TodoService) {}
+  constructor(private formBuilder: FormBuilder, private todoService: TodoService, @Inject(MAT_DIALOG_DATA) data) {
+    this.todo = data.todo;
+  }
 
   ngOnInit(): void {
     this.modifyForm = this.formBuilder.group({
       title: [this.todo.title, [Validators.required, Validators.minLength(1)]],
+      deadline: [this.todo.deadline, [Validators.required]],
     });
   }
 
   public onSubmit(): void {
-   const modified = {...this.todo, title: this.modifyForm.value.title};
+    console.log(this.todo.deadline);
+    
+    const modified = { ...this.todo, title: this.modifyForm.value.title, deadline: this.todo.deadline };
     this.todoService.modifyTodo(modified);
   }
-
-  public toggleButton(): void {
-    this.fieldOnFocus = !this.fieldOnFocus;
-  }
-
 }

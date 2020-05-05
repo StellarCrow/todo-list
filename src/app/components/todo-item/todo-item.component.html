@@ -1,14 +1,22 @@
 <div class="todo">
-  <div class="todo__check">
-    <mat-checkbox [checked]="todo.completed" (change)="checkTodo()">
-      <!-- {{ todo.completed }} -->
-      {{todo.username}}
-    </mat-checkbox>
+  <div class="todo__info">
+    <div class="todo__title">
+      {{ todo.title }}
+    </div>
+    <div class="todo__deadline">
+      Deadline: <span class="todo__date">{{ todo.deadline | date: 'd/M/yy' }}</span>
+    </div>
+    <div class="todo__name"><mat-icon>account_circle</mat-icon> {{ todo.username }}</div>
   </div>
-  <div class="todo__text">
-    <app-modify-form [todo]="todo"></app-modify-form>
-  </div>
-  <div class="todo__delete">
-    <button mat-raised-button color="warn" (click)="deleteTodo()">Delete</button>
+  <div class="todo__options">
+    <div class="todo__check">
+      <mat-checkbox [checked]="todo.completed" (change)="checkTodo()"> </mat-checkbox>
+    </div>
+    <div class="todo__settings">
+      <a class="todo__link"(click)="toggleModify()"><mat-icon>settings</mat-icon></a>
+    </div>
+    <div class="todo__delete">
+      <button mat-raised-button color="warn" (click)="deleteTodo()">Delete</button>
+    </div>
   </div>
 </div>
