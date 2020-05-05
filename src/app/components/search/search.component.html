@@ -1,0 +1,6 @@
+<form autocomplete="off" class="search" [formGroup]="searchForm">
+  <mat-form-field class="search__form-field" >
+    <mat-label class="search__label"><mat-icon>search</mat-icon> Search todos</mat-label>
+    <input class="search__input" matInput placeholder="Find unicorn..." (keyup)="onChange()" formControlName="searchText" />
+  </mat-form-field>
+</form>

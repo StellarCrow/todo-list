@@ -1,0 +1,16 @@
+@import 'setup/variables';
+
+.modify {
+    &__input {
+        border: none;
+        outline: none;
+        padding: 0.7em 0.25em;
+        width: auto;
+        margin-right: 1em;
+
+        &:focus {
+            border: 1px solid $gray;
+            border-radius: 0.8em;   
+        }
+    }
+}

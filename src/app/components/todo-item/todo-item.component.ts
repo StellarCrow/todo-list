@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ITodo } from 'src/app/models/ITodo';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ModifyFormComponent } from '../modify-form/modify-form.component';
 
 @Component({
   selector: 'app-todo-item',
@@ -11,6 +13,7 @@ export class TodoItemComponent {
 
   @Output() checkedTodo = new EventEmitter<ITodo>();
   @Output() deletedTodo = new EventEmitter<ITodo>();
+  @Output() modifiedTodo = new EventEmitter<ITodo>();
 
   public checkTodo(): void {
     this.checkedTodo.emit(this.todo);
@@ -18,5 +21,9 @@ export class TodoItemComponent {
 
   public deleteTodo(): void {
     this.deletedTodo.emit(this.todo);
+  }
+
+  public toggleModify(): void {
+    this.modifiedTodo.emit(this.todo);
   }
 }

@@ -25,12 +25,6 @@ export class AddTodoComponent implements OnInit {
     });
   }
 
-  public filterDate(d: Date | null): boolean {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    return d > yesterday;
-  }
-
   public onSubmit(): void {
     const item: ITodo = {
       ...this.addTodoForm.value,

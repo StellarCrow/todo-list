@@ -1,0 +1,11 @@
+<mat-form-field [formGroup]="parentForm" color="accent">
+  <mat-label>Deadline</mat-label>
+  <input
+    matInput
+    [formControlName]="controlName"
+    [matDatepickerFilter]="filterDate"
+    [matDatepicker]="datepickerName"
+  />
+  <mat-datepicker-toggle matSuffix [for]="datepickerName"></mat-datepicker-toggle>
+  <mat-datepicker #datepickerName></mat-datepicker>
+</mat-form-field>

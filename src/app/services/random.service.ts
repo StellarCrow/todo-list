@@ -8,7 +8,7 @@ export class RandomService {
   private chance = new Chance();
 
   public getRandomDate(year: number, month: number[]): string | Date {
-    return this.chance.date({ string: true, year: +year, month: this.randomNumber(month[0], month[1]), american: false });
+    return this.chance.date({ year: +year, month: this.randomNumber(month[0], month[1]) });
   }
 
   public getRandomName(): string {
