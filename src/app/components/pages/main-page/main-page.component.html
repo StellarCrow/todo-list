@@ -2,22 +2,30 @@
   <aside class="main__sidebar">
     <app-sidebar></app-sidebar>
   </aside>
-  <div class="main__content">
+  <div class="main__body">
     <div class="main__header">
-      <h1 class="main__title">BeeBetter</h1>
-    </div>
-    <a routerLink="/todo">Link</a>
-    <div class="main__options">
-      <div class="main__search">
-        <app-search></app-search>
+      <div class="main__image-container main__image-container--reverse">
+        <img src="assets/images/avocado.png" alt="avocado" class="main__image" />
       </div>
-      <div class="main__filters">Filters</div>
+      <h1 class="main__title">Avoca To-Do</h1>
+      <div class="main__image-container">
+        <img src="assets/images/avocado.png" alt="avocado" class="main__image" />
+      </div>
     </div>
-    <div class="main__form">
-      <app-add-todo></app-add-todo>
-    </div>
-    <div class="main__list">
-      <app-todo-list></app-todo-list>
+    <div class="main__content">
+      <div class="main__options">
+        <div class="main__search">
+          <app-search></app-search>
+        </div>
+        <div class="main__add-todo">
+          <a mat-fab matTooltip="Add new todo" class="main__link link" (click)="openDialog()"
+            ><mat-icon class="link__icon">library_add</mat-icon></a
+          >
+        </div>
+      </div>
+      <div class="main__list">
+        <app-todo-list></app-todo-list>
+      </div>
     </div>
   </div>
 </main>

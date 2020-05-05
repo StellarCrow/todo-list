@@ -1,19 +1,67 @@
+@import 'setup/variables';
+
 .main {
+  display: flex;
+  flex-flow: row nowrap;
+  background-attachment: fixed;
+  background-size: 100%;
+  min-height: 100vh;
+
+  &__header {
     display: flex;
-    flex-flow: row nowrap;
+    align-items: center;
+    padding: 5% 0;
+    width: 100%;
+    background: $primary-color;
+  }
 
-    &__sidebar {
-        flex: 0 1 20%;
-    }
+  &__image-container {
+    max-width: 25%;
+    text-align: left;
 
-    &__content {
-        flex: auto;
-        padding: 4% 3%;
+    &--reverse {
+      transform: scale(-1, 1);
     }
+  }
 
-    &__options {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-    }
+  &__image {
+    max-width: 50%;
+  }
+
+  &__title {
+    font-size: 3.5em;
+    letter-spacing: 0.015em;
+    font-weight: $black;
+    margin: auto;
+  }
+
+  &__sidebar {
+    flex: 0 1 20%;
+    background-color: $secondary-color;
+  }
+
+  &__body {
+    flex: auto;
+  }
+
+  &__content {
+    padding: 4% 3%;
+    background: $tertiary-color;
+  }
+
+  &__options {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  &__search {
+    flex: 0 1 50%;
+  }
+}
+
+.link {
+  &__icon {
+    color: $text-color--light;
+  }
 }
