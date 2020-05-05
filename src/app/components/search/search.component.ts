@@ -17,12 +17,7 @@ export class SearchComponent implements OnInit {
     this.searchForm = this.formBuilder.group({
       searchText: [''],
     });
-
-    // const search$ = this.searchForm.controls.searchText.valueChanges.pipe(startWith(''), debounceTime(500), distinctUntilChanged());
-    // this.todoService.searchTodos(search$);
   }
-
-  public onSubmit(): void {}
 
   public onChange(): void {
     const query = this.searchForm.value.searchText;

@@ -13,8 +13,7 @@ export class TodoItemComponent {
 
   @Output() checkedTodo = new EventEmitter<ITodo>();
   @Output() deletedTodo = new EventEmitter<ITodo>();
-
-  constructor(public dialog: MatDialog) {}
+  @Output() modifiedTodo = new EventEmitter<ITodo>();
 
   public checkTodo(): void {
     this.checkedTodo.emit(this.todo);
@@ -24,13 +23,7 @@ export class TodoItemComponent {
     this.deletedTodo.emit(this.todo);
   }
 
-  public toggleModify() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {todo: this.todo}
-
-    const dialogRef = this.dialog.open(ModifyFormComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+  public toggleModify(): void {
+    this.modifiedTodo.emit(this.todo);
   }
 }

@@ -1,5 +1,5 @@
 <form autocomplete="off" class="modify" [formGroup]="modifyForm" (submit)="onSubmit()">
   <input type="text" class="modify__input" formControlName="title" />
-  <app-datepicker [parentForm]="modifyForm" [controlName]="'deadline'" [datepickerName]="'deadline'"></app-datepicker>
+  <app-datepicker [parentForm]="modifyForm" [controlName]="'deadline'" [datepickerName]="'modifyDeadline'"></app-datepicker>
   <button class="modify__button button" mat-raised-button color="primary" type="submit" [disabled]="!modifyForm.valid">Save</button>
 </form>

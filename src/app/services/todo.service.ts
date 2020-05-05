@@ -1,8 +1,8 @@
 import { ITodo } from 'src/app/models/ITodo';
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { Observable, BehaviorSubject,combineLatest } from 'rxjs';
-import { map, catchError, tap, debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { map, catchError, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { RandomService } from './random.service';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { RandomService } from './random.service';
 export class TodoService {
   private todoList: ITodo[] = [];
   private subject = new BehaviorSubject<ITodo[]>([]);
-  public search = new BehaviorSubject<string>('');
+  private search = new BehaviorSubject<string>('');
   public todos$: Observable<ITodo[]>;
   private url = 'https://jsonplaceholder.typicode.com/todos';
 
@@ -20,7 +20,7 @@ export class TodoService {
     this.getTodos().subscribe();
   }
 
-  private initTodos() {
+  private initTodos(): void {
     const search$ = this.search.asObservable().pipe(debounceTime(500), distinctUntilChanged());
     this.todos$ = combineLatest([this.subject.asObservable(), search$]).pipe(
       map(([todos, searchString]) => {
@@ -75,7 +75,7 @@ export class TodoService {
     this.subject.next(this.todoList);
   }
 
-  public searchTodos(searchQuery: string) {
+  public searchTodos(searchQuery: string): void {
     this.search.next(searchQuery);
   }
 }

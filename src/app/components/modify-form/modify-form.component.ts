@@ -26,9 +26,7 @@ export class ModifyFormComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.todo.deadline);
-    
-    const modified = { ...this.todo, title: this.modifyForm.value.title, deadline: this.todo.deadline };
+    const modified = { ...this.todo, title: this.modifyForm.value.title, deadline: this.modifyForm.value.deadline };
     this.todoService.modifyTodo(modified);
   }
 }
