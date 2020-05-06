@@ -13,8 +13,6 @@ import { Observable } from 'rxjs';
 export class TodoListComponent implements OnInit {
   public todoList: Observable<ITodo[]>;
 
-  @Input() searchText: string;
-
   constructor(private todoService: TodoService, public dialog: MatDialog) {}
 
   ngOnInit(): void {

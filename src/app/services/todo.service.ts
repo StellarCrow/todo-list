@@ -12,6 +12,7 @@ export class TodoService {
   private todoList: ITodo[] = [];
   private subject = new BehaviorSubject<ITodo[]>([]);
   private search = new BehaviorSubject<string>('');
+  private sorting = new BehaviorSubject<string>('');
   public todos$: Observable<ITodo[]>;
   private url = 'https://jsonplaceholder.typicode.com/todos';
 
@@ -22,13 +23,30 @@ export class TodoService {
 
   private initTodos(): void {
     const search$ = this.search.asObservable().pipe(debounceTime(500), distinctUntilChanged());
-    this.todos$ = combineLatest([this.subject.asObservable(), search$]).pipe(
-      map(([todos, searchString]) => {
-        return todos.filter((todo) => {
+    const sorting$ = this.sorting.asObservable();
+    this.todos$ = combineLatest([this.subject.asObservable(), search$, sorting$]).pipe(
+      map(([todos, searchString, sortQuery]) => {
+        const searchedTodos = todos.filter((todo) => {
           return todo.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
         });
+        if (sortQuery) {
+          return searchedTodos.sort(this.dynamicSort(sortQuery));
+        }
+        return searchedTodos;
       })
     );
+  }
+
+  private dynamicSort(property: string): (a: ITodo, b: ITodo) => number {
+    let sortOrder = 1;
+    if (property && property[0] === '-') {
+      sortOrder = -1;
+      property = property.substr(1);
+    }
+    return (a: ITodo, b: ITodo) => {
+      const result = a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+      return result * sortOrder;
+    };
   }
 
   public getTodos(): Observable<ITodo[]> {
@@ -77,5 +95,9 @@ export class TodoService {
 
   public searchTodos(searchQuery: string): void {
     this.search.next(searchQuery);
+  }
+
+  public sortTodos(sortQuery: string): void {
+    this.sorting.next(sortQuery);
   }
 }
