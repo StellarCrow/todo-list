@@ -8,7 +8,7 @@
   padding: 2% 3%;
   border-radius: 1em;
   box-shadow: 0 0 3px $primary-color;
-  background: linear-gradient(to right, $text-color--light, $text-color--light, $primary-color);
+  background-color: $text-color--light;
 
   &__options {
     align-self: flex-end;

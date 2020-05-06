@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 
 const components = [
   MatCheckboxModule,
@@ -19,6 +20,7 @@ const components = [
   BrowserAnimationsModule,
   MatTooltipModule,
   MatDialogModule,
+  MatRadioModule
 ];
 
 @NgModule({
