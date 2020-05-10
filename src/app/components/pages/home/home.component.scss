@@ -1,0 +1,36 @@
+@import "setup/variables";
+
+.home {
+  min-height: 100vh;
+  background: url(/assets/backgrounds/home.gif) no-repeat bottom right;
+  display: flex;
+
+  &__container {
+    margin: auto;
+  }
+
+  &__form,
+  &__header {
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 3.5em;
+    font-family: $ff-header;
+  }
+
+  &__input {
+    padding: 1em 1.2em;
+    border: 1px solid $gray;
+    border-radius: 1em;
+    outline: none;
+    font-family: $ff-primary;
+    margin-right: 1em;
+
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+  }
+}
+
+

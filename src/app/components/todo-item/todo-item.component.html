@@ -3,6 +3,9 @@
     <div class="todo__title">
       {{ todo.title }}
     </div>
+    <div class="todo__creation-date">
+      Created: <span class="todo__date">{{ todo.creationDate | date: 'd/M/yy' }}</span>
+    </div>
     <div class="todo__deadline">
       Deadline: <span class="todo__date">{{ todo.deadline | date: 'd/M/yy' }}</span>
     </div>

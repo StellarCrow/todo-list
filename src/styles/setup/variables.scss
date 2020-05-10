@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:ital,wght@0,200;0,300;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sigmar+One&family=Raleway:ital,wght@0,200;0,300;0,900;1,400;1,700&display=swap');
 
 //----------BREAKPOINTS-------------
 
@@ -24,11 +24,16 @@ $black: 900;
 
 //----------FONT-FAMILY-------------
 $ff-primary: 'Raleway', sans-serif;
+$ff-header: 'Sigmar One', cursive;
 
 
 //-------------FONT-SIZE----------------
 
 $base-font-size: 16px;
+
+//-------------SIDEBAR----------------
+
+$sidebar-width: 250px;
 
 //-------------COLORS------------------
 $primary-color: #baf4a5;
