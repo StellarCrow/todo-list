@@ -1,10 +1,10 @@
 <app-header></app-header>
 <mat-sidenav-container class="sidenav">
-  <mat-sidenav #sidenav mode="side" [fixedInViewport]="true">
+  <mat-sidenav #sidenav mode="side" [fixedInViewport]="true" [fixedTopGap]="120" class="sidenav__bar">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
 
-  <mat-sidenav-content>
+  <mat-sidenav-content class="sidenav__content">
    <main class="main">
      <div class="main__list">
        <app-todo-list></app-todo-list>
@@ -12,36 +12,3 @@
    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-<!--<main class="main">-->
-<!--  <aside class="main__sidebar">-->
-<!--    <app-sidebar></app-sidebar>-->
-<!--  </aside>-->
-<!--  <div class="main__сontainer">-->
-<!--    <div class="main__header">-->
-<!--      <div class="main__image-container main__image-container&#45;&#45;reverse">-->
-<!--        <img src="assets/images/avocado.png" alt="avocado" class="main__image" />-->
-<!--      </div>-->
-<!--      <h1 class="main__title">Avoca To-Do</h1>-->
-<!--      <div class="main__image-container">-->
-<!--        <img src="assets/images/avocado.png" alt="avocado" class="main__image" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="main__content">-->
-<!--      <div class="main__options">-->
-<!--        <div class="main__search">-->
-<!--          <app-search></app-search>-->
-<!--        </div>-->
-<!--        <div class="main__add-todo">-->
-<!--          <a mat-fab matTooltip="Add new todo" class="main__link link" (click)="openDialog()"-->
-<!--            ><mat-icon class="link__icon">library_add</mat-icon></a-->
-<!--          >-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="main__list">-->
-<!--        <app-todo-list></app-todo-list>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</main>-->
