@@ -17,6 +17,7 @@ import { SearchComponent } from './components/search/search.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HeaderComponent } from './components/header/header.component';
     DatepickerComponent,
     HomeComponent,
     HeaderComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule, FormsModule, ReactiveFormsModule],
   providers: [],

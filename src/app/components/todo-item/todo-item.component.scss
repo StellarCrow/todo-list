@@ -10,6 +10,10 @@
   box-shadow: 0 0 3px $primary-color;
   background-color: $text-color--light;
 
+  &--completed {
+    background-color: #fffee7;
+  }
+
   &__check {
     text-align: center;
     min-width: 15%;
