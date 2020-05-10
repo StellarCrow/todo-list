@@ -1,16 +1,22 @@
 @import 'setup/variables';
 
 .modify {
-    &__input {
-        border: none;
-        outline: none;
-        padding: 0.7em 0.25em;
-        width: auto;
-        margin-right: 1em;
+  padding-bottom: 50%;
+  background: url(/assets/images/avocat.png) no-repeat bottom right;
+  background-size: 50% auto;
 
-        &:focus {
-            border: 1px solid $gray;
-            border-radius: 0.8em;   
-        }
-    }
+  &__heading {
+    font-family: $ff-header;
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 1em;
+  }
 }
+
+.form {
+  &__field {
+    margin-right: 1em;
+  }
+}
+
+

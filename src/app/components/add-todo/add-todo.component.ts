@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ITodo } from 'src/app/models/ITodo';
 import { v4 as uuidv4 } from 'uuid';
 import { TodoService } from 'src/app/services/todo.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -12,7 +13,7 @@ import { TodoService } from 'src/app/services/todo.service';
 export class AddTodoComponent implements OnInit {
   public addTodoForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private todoService: TodoService) {}
+  constructor(private formBuilder: FormBuilder, private todoService: TodoService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -26,12 +27,13 @@ export class AddTodoComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    const user= this.userService.getUser();
     const item: ITodo = {
       ...this.addTodoForm.value,
       userId: 1,
       id: uuidv4(),
       completed: false,
-      username: 'Someone',
+      username: user,
       creationDate: new Date(),
     };
     this.todoService.createTodo(item);

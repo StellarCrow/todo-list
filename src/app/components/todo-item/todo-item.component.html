@@ -1,4 +1,11 @@
 <div class="todo">
+  <div class="todo__check">
+    <label [for]="todo.id" class="todo__avocado">
+      <img [src]="imageSrc" class="todo__image" alt="avocado">
+    </label>
+    <input type="checkbox" [id]="todo.id" class="todo__checkbox" [checked]="todo.completed" (change)="checkTodo()" />
+    <div class="todo__completed">{{todo.completed ? "Completed" : ""}}</div>
+  </div>
   <div class="todo__info">
     <div class="todo__title">
       {{ todo.title }}
@@ -12,9 +19,6 @@
     <div class="todo__name"><mat-icon>account_circle</mat-icon> {{ todo.username }}</div>
   </div>
   <div class="todo__options">
-    <div class="todo__check">
-      <mat-checkbox [checked]="todo.completed" (change)="checkTodo()"> </mat-checkbox>
-    </div>
     <div class="todo__settings">
       <a class="todo__link"(click)="toggleModify()"><mat-icon>settings</mat-icon></a>
     </div>

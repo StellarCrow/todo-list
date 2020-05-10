@@ -15,6 +15,10 @@ export class TodoItemComponent {
   @Output() deletedTodo = new EventEmitter<ITodo>();
   @Output() modifiedTodo = new EventEmitter<ITodo>();
 
+  get imageSrc(): string {
+    return this.todo.completed ? 'assets/images/checked.png' : 'assets/images/unchecked.png'
+  }
+
   public checkTodo(): void {
     this.checkedTodo.emit(this.todo);
   }

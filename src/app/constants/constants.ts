@@ -5,3 +5,9 @@ export const sorting = [
   { value: 'creationDate', title: 'Oldest' },
   { value: '', title: 'Clear' },
 ];
+
+export const filters = [
+  {value: 'completed', title: 'Completed'},
+  {value: 'uncompleted', title: 'Uncompleted'},
+  {value: 'my', title: 'My todos'}
+];
