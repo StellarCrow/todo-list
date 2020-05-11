@@ -1,0 +1,45 @@
+@import "setup/variables";
+.header {
+  padding: 2% 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: $header-height;
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0 0 3px $gray;
+
+  &__button,
+  &__icon {
+    font-size: 1.5em;
+  }
+
+  &__link-icon {
+    color: #ffffff;
+  }
+
+  &__search {
+    min-width: 20%;
+  }
+
+  &__profile {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    max-width: 20%;
+
+  }
+
+  &__avatar {
+    max-width: 20%;
+    margin-right: 0.5em;
+  }
+
+  &__image {
+    max-width: 100%;
+    height: auto;
+  }
+}

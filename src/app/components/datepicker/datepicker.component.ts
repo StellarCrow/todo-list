@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-datepicker',
   templateUrl: './datepicker.component.html',
-  styleUrls: ['./datepicker.component.scss']
+  styleUrls: ['./datepicker.component.scss'],
 })
 export class DatepickerComponent {
   @Input() parentForm: FormGroup;
@@ -16,5 +16,4 @@ export class DatepickerComponent {
     yesterday.setDate(yesterday.getDate() - 1);
     return d > yesterday;
   }
-
 }

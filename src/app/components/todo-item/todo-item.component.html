@@ -1,7 +1,17 @@
-<div class="todo">
+<div class="todo" [ngClass]="todo.completed ? 'todo--completed' : ''">
+  <div class="todo__check">
+    <label [for]="todo.id" class="todo__avocado">
+      <img [src]="imageSrc" class="todo__image" alt="avocado" />
+    </label>
+    <input type="checkbox" [id]="todo.id" class="todo__checkbox" [checked]="todo.completed" (change)="checkTodo()" />
+    <div class="todo__completed">{{ todo.completed ? 'Completed' : '' }}</div>
+  </div>
   <div class="todo__info">
     <div class="todo__title">
       {{ todo.title }}
+    </div>
+    <div class="todo__creation-date">
+      Created: <span class="todo__date">{{ todo.creationDate | date: 'd/M/yy' }}</span>
     </div>
     <div class="todo__deadline">
       Deadline: <span class="todo__date">{{ todo.deadline | date: 'd/M/yy' }}</span>
@@ -9,11 +19,8 @@
     <div class="todo__name"><mat-icon>account_circle</mat-icon> {{ todo.username }}</div>
   </div>
   <div class="todo__options">
-    <div class="todo__check">
-      <mat-checkbox [checked]="todo.completed" (change)="checkTodo()"> </mat-checkbox>
-    </div>
     <div class="todo__settings">
-      <a class="todo__link"(click)="toggleModify()"><mat-icon>settings</mat-icon></a>
+      <a class="todo__link" (click)="toggleModify()"><mat-icon>settings</mat-icon></a>
     </div>
     <div class="todo__delete">
       <button mat-raised-button color="warn" (click)="deleteTodo()">Delete</button>

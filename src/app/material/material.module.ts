@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const components = [
   MatCheckboxModule,
@@ -20,7 +21,8 @@ const components = [
   BrowserAnimationsModule,
   MatTooltipModule,
   MatDialogModule,
-  MatRadioModule
+  MatRadioModule,
+  MatSidenavModule
 ];
 
 @NgModule({

@@ -1,0 +1,18 @@
+@import "setup/variables";
+
+.sidebar {
+  width: $sidebar-width;
+  padding: 3% 2%;
+  box-sizing: border-box;
+
+  &__heading {
+    text-align: center;
+    font-weight: $bold;
+  }
+
+  &__radio {
+    display: block;
+    font-weight: $light;
+    margin-bottom: 0.5em;
+  }
+}

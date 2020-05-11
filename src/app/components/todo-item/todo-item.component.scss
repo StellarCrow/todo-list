@@ -3,12 +3,44 @@
 .todo {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 2% 3%;
   border-radius: 1em;
   box-shadow: 0 0 3px $primary-color;
   background-color: $text-color--light;
+
+  &--completed {
+    background-color: #fffee7;
+  }
+
+  &__check {
+    text-align: center;
+    min-width: 15%;
+    margin-right: 2em;
+  }
+
+  &__avocado {
+    cursor: pointer;
+  }
+
+  &__image {
+    width: auto;
+    height: 80px;
+    margin: 0.3em auto;
+    display: block;
+  }
+
+  &__completed {
+    text-transform: uppercase;
+    color: $gray;
+    font-weight: $bold;
+    font-size: 0.8em;
+  }
+
+  &__checkbox {
+    display: none;
+  }
 
   &__options {
     align-self: flex-end;
@@ -16,11 +48,16 @@
     justify-content: space-evenly;
     align-items: center;
     flex: 0 1 20%;
+    margin-left: auto;
   }
 
   &__title {
     font-weight: $bold;
     margin-bottom: 1em;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   &__deadline {

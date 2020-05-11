@@ -1,7 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ITodo } from 'src/app/models/ITodo';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ModifyFormComponent } from '../modify-form/modify-form.component';
 
 @Component({
   selector: 'app-todo-item',
@@ -9,11 +7,17 @@ import { ModifyFormComponent } from '../modify-form/modify-form.component';
   styleUrls: ['./todo-item.component.scss'],
 })
 export class TodoItemComponent {
+  private checkedImg = 'assets/images/checked.png';
+  private uncheckedImg = 'assets/images/unchecked.png';
   @Input() todo: ITodo;
 
   @Output() checkedTodo = new EventEmitter<ITodo>();
   @Output() deletedTodo = new EventEmitter<ITodo>();
   @Output() modifiedTodo = new EventEmitter<ITodo>();
+
+  get imageSrc(): string {
+    return this.todo.completed ? this.checkedImg : this.uncheckedImg;
+  }
 
   public checkTodo(): void {
     this.checkedTodo.emit(this.todo);

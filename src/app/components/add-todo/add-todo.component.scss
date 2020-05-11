@@ -1,0 +1,22 @@
+@import "setup/variables";
+
+.add-todo {
+  text-align: center;
+  padding-bottom: 50%;
+  background: url(/assets/backgrounds/avocado-dance.gif) no-repeat bottom right;
+  background-size: 50% auto;
+
+  &__header {
+    margin-bottom: 1em;
+  }
+
+  &__title {
+    font-family: $ff-header;
+  }
+}
+
+.form {
+  &__field {
+    margin-right: 0.8em;
+  }
+}

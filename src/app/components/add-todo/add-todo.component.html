@@ -1,8 +1,27 @@
-<form [formGroup]="addTodoForm" autocomplete="off" (submit)="onSubmit()">
-  <mat-form-field appearance="outline">
-    <mat-label>Add Todo</mat-label>
-    <input matInput placeholder="Save the world..." formControlName="title" />
-  </mat-form-field>
-  <app-datepicker [parentForm]="addTodoForm" [controlName]="'deadline'" [datepickerName]="'deadline'"></app-datepicker>
-  <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!addTodoForm.valid">Add todo</button>
-</form>
+<div class="add-todo">
+  <div class="add-todo__header">
+    <h2 class="add-todo__title">Create new todo</h2>
+  </div>
+  <form [formGroup]="addTodoForm" class="add-todo__form form" autocomplete="off" (submit)="onSubmit()">
+    <mat-form-field class="form__field" appearance="outline">
+      <mat-label class="form__label">Add Todo</mat-label>
+      <input class="form__input" matInput placeholder="Save the world..." formControlName="title" />
+    </mat-form-field>
+    <app-datepicker
+      class="form__field"
+      [parentForm]="addTodoForm"
+      [controlName]="'deadline'"
+      [datepickerName]="'deadline'"
+    ></app-datepicker>
+    <button
+      class="form__button button"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [mat-dialog-close]="addTodoForm.valid"
+      [disabled]="!addTodoForm.valid"
+    >
+      Add todo
+    </button>
+  </form>
+</div>

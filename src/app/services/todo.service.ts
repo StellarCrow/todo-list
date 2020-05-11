@@ -4,6 +4,7 @@ import { HttpService } from './http.service';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, catchError, tap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { RandomService } from './random.service';
+import { IFilter } from '../models/IFilter';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,7 @@ export class TodoService {
   private subject = new BehaviorSubject<ITodo[]>([]);
   private search = new BehaviorSubject<string>('');
   private sorting = new BehaviorSubject<string>('');
+  private filtering = new BehaviorSubject<IFilter[]>([]);
   public todos$: Observable<ITodo[]>;
   private url = 'https://jsonplaceholder.typicode.com/todos';
 
@@ -24,17 +26,32 @@ export class TodoService {
   private initTodos(): void {
     const search$ = this.search.asObservable().pipe(debounceTime(500), distinctUntilChanged());
     const sorting$ = this.sorting.asObservable();
-    this.todos$ = combineLatest([this.subject.asObservable(), search$, sorting$]).pipe(
-      map(([todos, searchString, sortQuery]) => {
-        const searchedTodos = todos.filter((todo) => {
+    const filtering$ = this.filtering.asObservable();
+    this.todos$ = combineLatest([this.subject.asObservable(), search$, sorting$, filtering$]).pipe(
+      map(([todos, searchString, sortQuery, filters]) => {
+        let finalTodos = todos.filter((todo) => {
           return todo.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
         });
-        if (sortQuery) {
-          return searchedTodos.sort(this.dynamicSort(sortQuery));
+        if (filters) {
+          finalTodos = this.filterByQueries(finalTodos, filters);
         }
-        return searchedTodos;
+        if (sortQuery) {
+          return finalTodos.sort(this.dynamicSort(sortQuery));
+        }
+        return finalTodos;
       })
     );
+  }
+
+  private filterByQueries(todos: ITodo[], filters: IFilter[]): ITodo[] {
+    return todos.filter((todo) => {
+      for (const filter of filters) {
+        if (todo[filter.key] !== filter.value) {
+          return false;
+        }
+      }
+      return true;
+    });
   }
 
   private dynamicSort(property: string): (a: ITodo, b: ITodo) => number {
@@ -99,5 +116,9 @@ export class TodoService {
 
   public sortTodos(sortQuery: string): void {
     this.sorting.next(sortQuery);
+  }
+
+  public filterTodos(filters: IFilter[]): void {
+    this.filtering.next(filters);
   }
 }

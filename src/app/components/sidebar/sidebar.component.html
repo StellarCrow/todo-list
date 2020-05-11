@@ -1,10 +1,19 @@
 <div class="sidebar">
-    <div class="sidebar__sorting">
-        <mat-radio-group (change)="onChange($event)" name="sorting">
-            <mat-radio-button *ngFor="let sort of sorts" [value]="sort.value" checked>{{sort.title}}</mat-radio-button>
-          </mat-radio-group> 
-    </div>
-    <div class="sidebar__filters">
-
-    </div>
+  <div class="sidebar__sorting">
+    <div class="sidebar__heading">Sort</div>
+    <mat-radio-group (change)="onChange($event)" name="sorting">
+      <mat-radio-button class="sidebar__radio" *ngFor="let sort of sorts" [value]="sort.value" checked>{{ sort.title }}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="sidebar__filters">
+    <div class="sidebar__heading">Filter</div>
+    <mat-checkbox
+      name="filter"
+      *ngFor="let filter of filters"
+      [name]="filter.key"
+      [value]="filter.value"
+      (change)="onChangeFilter($event)"
+      >{{ filter.title }}</mat-checkbox
+    >
+  </div>
 </div>
