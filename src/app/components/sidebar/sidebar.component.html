@@ -1,4 +1,7 @@
 <div class="sidebar">
+  <div class="sidebar__search">
+    <app-search></app-search>
+  </div>
   <div class="sidebar__sorting">
     <div class="sidebar__heading">Sort</div>
     <mat-radio-group (change)="onChange($event)" name="sorting">
@@ -9,6 +12,7 @@
     <div class="sidebar__heading">Filter</div>
     <mat-checkbox
       name="filter"
+      class="sidebar__checkbox"
       *ngFor="let filter of filters"
       [name]="filter.key"
       [value]="filter.value"

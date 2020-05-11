@@ -14,6 +14,12 @@
     background-color: #fffee7;
   }
 
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    max-width: 80%;
+  }
+
   &__check {
     text-align: center;
     min-width: 15%;
@@ -64,6 +70,10 @@
     font-weight: $light;
     color: $gray;
     margin-bottom: 1.5em;
+
+    & > .todo__date {
+      color: $danger-color;
+    }
   }
 
   &__date {
@@ -78,5 +88,26 @@
   &__link {
       color: $gray;
       cursor: pointer;
+  }
+}
+
+@media (max-width: $bp-xsmall) {
+  .todo {
+    flex-flow: column nowrap;
+
+    &__image {
+      height: 60px;
+    }
+
+    &__check {
+      text-align: center;
+      min-width: 15%;
+      margin-right: 0;
+      margin-bottom: 1.5em;
+    }
+
+    &__settings {
+      margin-right: 1em;
+    }
   }
 }

@@ -5,14 +5,27 @@
   padding: 3% 2%;
   box-sizing: border-box;
 
+  &__search {
+    display: none;
+  }
+
   &__heading {
     text-align: center;
     font-weight: $bold;
   }
 
+  &__checkbox,
   &__radio {
     display: block;
     font-weight: $light;
     margin-bottom: 0.5em;
+  }
+}
+
+@media (max-width: $bp-xsmall) {
+  .sidebar {
+    &__search {
+      display: block;
+    }
   }
 }

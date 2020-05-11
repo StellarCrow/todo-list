@@ -1,4 +1,4 @@
-@import "setup/variables";
+@import 'setup/variables';
 .header {
   padding: 2% 3%;
   display: flex;
@@ -11,6 +11,15 @@
   box-sizing: border-box;
   background: #ffffff;
   box-shadow: 0 0 3px $gray;
+
+  &__group {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  &__sidebar-button {
+    margin-right: 2em;
+  }
 
   &__button,
   &__icon {
@@ -30,16 +39,38 @@
     flex-flow: row nowrap;
     align-items: center;
     max-width: 20%;
-
   }
 
   &__avatar {
-    max-width: 20%;
+    max-width: 60px;
     margin-right: 0.5em;
   }
 
   &__image {
-    max-width: 100%;
+    max-width: 60px;
     height: auto;
+  }
+}
+
+@media (max-width: $bp-small) {
+  .header__profile {
+    flex-flow: column nowrap;
+  }
+}
+
+@media (max-width: $bp-xsmall) {
+  .header {
+    &__search {
+      display: none;
+    }
+
+    &__profile {
+      flex-flow: row nowrap;
+      max-width: 100%;
+    }
+
+    &__image {
+      max-width: 45px;
+    }
   }
 }
