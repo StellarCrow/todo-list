@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '12'
+before_install:
+- npm install -g @angular/cli
+install: npm install
+branches:
+  only:
+  - master
+deploy:
+  provider: heroku
+  app: avoca-todo
+  api_key:
+    secure: MWImSvf3JrQZJkedOCRexIZ8GrjyoqdYZvUA/RtlTAqWSjBjsCES2ra8FB2AttpjYvxlZr47y2yk67WDa/yL1kLwA5uZTEarCgqEdIZfM9jS70QEH7+ohiKNK9BHU4LT1TWVSSVI05IFucKAWJ+8r9E5z/Gt6l7hai9pO9w5fjb515xc8Rn3tzqOubnRxCpo78BCEjuj0Afpx5n5mREcNlJFb8/nocLbK2swUVmfxzEpUkNcwWtK+9izDUTr5t8ml73M1reEqabqDUd9X+nSt71Xn/tZbG3UDE3JTRSkDT2Iv3v/KkBwMkWoO2fSyOVnMOLZLmku55cgnbByQyD11muFVND17BVLaMtHQpt5Y5RF3nphhlbFDYZvhFFF7934iG6GGdZ0y2/JQTCGVq8C8NFbXxFEV3bI3IdRxOWqVKC5mzzevP8RXjROMWOJDatr1YYds47ETh/ylsnfVbm6FCBmpeZSN4wtKNxFU870LqhLM1iABEka4pycC/fagpSrUvADBMvkmrYhON87hBFcADDMAKeYTvmUCoAGQ7URxk7aK+AeCwZCPGpNgFfM+uDDlBHtDnUy9b5yz3gDI6h3FP/T2z4Yn1FSy+2py+T7hq5IyPNtHk93x05u5XBP7MRlHHovlQJbcyz0nx4GK40h2P06+1/2QXZQqmkHNVkv8fs=
