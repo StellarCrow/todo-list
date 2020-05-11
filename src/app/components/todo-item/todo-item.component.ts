@@ -7,6 +7,8 @@ import { ITodo } from 'src/app/models/ITodo';
   styleUrls: ['./todo-item.component.scss'],
 })
 export class TodoItemComponent {
+  private checkedImg = 'assets/images/checked.png';
+  private uncheckedImg = 'assets/images/unchecked.png';
   @Input() todo: ITodo;
 
   @Output() checkedTodo = new EventEmitter<ITodo>();
@@ -14,7 +16,7 @@ export class TodoItemComponent {
   @Output() modifiedTodo = new EventEmitter<ITodo>();
 
   get imageSrc(): string {
-    return this.todo.completed ? 'assets/images/checked.png' : 'assets/images/unchecked.png';
+    return this.todo.completed ? this.checkedImg : this.uncheckedImg;
   }
 
   public checkTodo(): void {

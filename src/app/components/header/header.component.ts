@@ -7,25 +7,24 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   public username: string;
-  constructor(public dialog: MatDialog, private sidenavService: SidenavService, private userService: UserService) { }
+  constructor(public dialog: MatDialog, private sidenavService: SidenavService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.username = this.userService.getUser();
   }
 
-  public toggleSidenav() {
+  public toggleSidenav(): void {
     this.sidenavService.toggle();
   }
 
-  public openDialog() {
+  public openDialog(): void {
     const dialogRef = this.dialog.open(AddTodoComponent);
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
   }
-
 }

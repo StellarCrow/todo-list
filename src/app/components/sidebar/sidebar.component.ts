@@ -2,10 +2,10 @@ import { sorting, filters } from './../../constants/constants';
 import { Component, OnInit } from '@angular/core';
 import { MatRadioChange, MatRadioButton } from '@angular/material/radio';
 import { TodoService } from 'src/app/services/todo.service';
-import { SidenavService } from '../../services/sidenav.service';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { UserService } from '../../services/user.service';
 import { IFilter } from '../../models/IFilter';
+import { ISort } from '../../models/ISort';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,9 +13,9 @@ import { IFilter } from '../../models/IFilter';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  public sorts: object[];
+  public sorts: ISort[];
   public filters: IFilter[];
-  private filterArray = [];
+  private activeFilters = [];
 
   constructor(private todoService: TodoService, private userService: UserService) {}
 
@@ -35,12 +35,12 @@ export class SidebarComponent implements OnInit {
     const eventKey = event.source.name;
     const eventValue = event.source.value;
     const filterObject = { key: eventKey, value: eventValue };
-    const elementIndex = this.filterArray.findIndex((item) => item.key === eventKey && item.value === eventValue);
+    const elementIndex = this.activeFilters.findIndex((item) => item.key === eventKey && item.value === eventValue);
     if (elementIndex > -1) {
-      this.filterArray.splice(elementIndex, 1);
+      this.activeFilters.splice(elementIndex, 1);
     } else {
-      this.filterArray.push(filterObject);
+      this.activeFilters.push(filterObject);
     }
-    this.todoService.filterTodos(this.filterArray);
+    this.todoService.filterTodos(this.activeFilters);
   }
 }

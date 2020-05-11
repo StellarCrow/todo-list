@@ -44,7 +44,7 @@ export class TodoService {
   }
 
   private filterByQueries(todos: ITodo[], filters: IFilter[]): ITodo[] {
-    const filtered = todos.filter((todo) => {
+    return todos.filter((todo) => {
       for (const filter of filters) {
         if (todo[filter.key] !== filter.value) {
           return false;
@@ -52,7 +52,6 @@ export class TodoService {
       }
       return true;
     });
-    return filtered;
   }
 
   private dynamicSort(property: string): (a: ITodo, b: ITodo) => number {
