@@ -1,3 +1,5 @@
+import { IFilter } from '../models/IFilter';
+
 export const sorting = [
   { value: 'deadline', title: 'Deadline' },
   { value: 'title', title: 'Alphabetic' },
@@ -6,8 +8,7 @@ export const sorting = [
   { value: '', title: 'Clear' },
 ];
 
-export const filters = [
-  {value: 'completed', title: 'Completed'},
-  {value: 'uncompleted', title: 'Uncompleted'},
-  {value: 'my', title: 'My todos'}
+export const filters: IFilter[] = [
+  { key: 'completed', value: true, title: 'Completed' },
+  { key: 'completed', value: false, title: 'Uncompleted' },
 ];

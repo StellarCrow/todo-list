@@ -5,9 +5,21 @@
       <mat-label class="form__label">Modify</mat-label>
       <input class="form__input" matInput placeholder="Save the world..." formControlName="title" />
     </mat-form-field>
-    <app-datepicker class="form__field" [parentForm]="modifyForm" [controlName]="'deadline'" [datepickerName]="'modifyDeadline'"></app-datepicker>
-    <button class="modify__button button" mat-raised-button color="primary" type="submit" [mat-dialog-close]="modifyForm.valid" [disabled]="!modifyForm.valid">Save</button>
+    <app-datepicker
+      class="form__field"
+      [parentForm]="modifyForm"
+      [controlName]="'deadline'"
+      [datepickerName]="'modifyDeadline'"
+    ></app-datepicker>
+    <button
+      class="modify__button button"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [mat-dialog-close]="modifyForm.valid"
+      [disabled]="!modifyForm.valid"
+    >
+      Save
+    </button>
   </form>
 </div>
-
-

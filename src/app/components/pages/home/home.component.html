@@ -5,8 +5,17 @@
       <p class="home__subtitle">Write your username below.</p>
     </div>
     <form class="home__form" (submit)="onSubmit($event)">
-      <input type="text" class="home__input" maxlength="30" [(ngModel)]="username" placeholder="Avocadio..." name="username" autofocus required />
-      <button  class="home__button button" mat-raised-button color="primary" type="submit">Continue</button>
+      <input
+        type="text"
+        class="home__input"
+        maxlength="30"
+        [(ngModel)]="username"
+        placeholder="Avocadio..."
+        name="username"
+        autofocus
+        required
+      />
+      <button class="home__button button" mat-raised-button color="primary" type="submit">Continue</button>
     </form>
   </div>
 </main>

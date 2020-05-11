@@ -7,9 +7,21 @@
       <mat-label class="form__label">Add Todo</mat-label>
       <input class="form__input" matInput placeholder="Save the world..." formControlName="title" />
     </mat-form-field>
-    <app-datepicker class="form__field" [parentForm]="addTodoForm" [controlName]="'deadline'" [datepickerName]="'deadline'"></app-datepicker>
-    <button class="form__button button" mat-raised-button color="primary" type="submit" [mat-dialog-close]="addTodoForm.valid" [disabled]="!addTodoForm.valid">Add todo</button>
+    <app-datepicker
+      class="form__field"
+      [parentForm]="addTodoForm"
+      [controlName]="'deadline'"
+      [datepickerName]="'deadline'"
+    ></app-datepicker>
+    <button
+      class="form__button button"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [mat-dialog-close]="addTodoForm.valid"
+      [disabled]="!addTodoForm.valid"
+    >
+      Add todo
+    </button>
   </form>
 </div>
-
-

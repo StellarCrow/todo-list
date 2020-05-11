@@ -1,7 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ITodo } from 'src/app/models/ITodo';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ModifyFormComponent } from '../modify-form/modify-form.component';
 
 @Component({
   selector: 'app-todo-item',
@@ -16,7 +14,7 @@ export class TodoItemComponent {
   @Output() modifiedTodo = new EventEmitter<ITodo>();
 
   get imageSrc(): string {
-    return this.todo.completed ? 'assets/images/checked.png' : 'assets/images/unchecked.png'
+    return this.todo.completed ? 'assets/images/checked.png' : 'assets/images/unchecked.png';
   }
 
   public checkTodo(): void {

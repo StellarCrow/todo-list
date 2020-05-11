@@ -5,10 +5,12 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="sidenav__content">
-   <main class="main">
-     <div class="main__list">
-       <app-todo-list></app-todo-list>
-     </div>
-   </main>
+    <main class="main">
+      <div class="main__heading">Avoca To-Do</div>
+      <div class="main__count">Found {{ count }} avocados</div>
+      <div class="main__list">
+        <app-todo-list></app-todo-list>
+      </div>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
